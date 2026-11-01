@@ -112,7 +112,12 @@ def demo_bst_range_query(bst, low, high):
 
 
 if __name__ == "__main__":
-    df = load_data("/mnt/user-data/outputs/gst_invoices.csv")
+    import os
+    import sys
+
+    default_csv = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gst_invoices.csv")
+    csv_path = sys.argv[1] if len(sys.argv) > 1 else default_csv
+    df = load_data(csv_path)
 
     graph, ledger, bst, gstin_to_name = build_structures(df)
 
